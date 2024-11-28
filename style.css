@@ -96,22 +96,22 @@ body {
 }
 
 /* Dynamic Blocks */
-.x,
-.y {
+#x,
+#y {
   background-color: white;
   display: flex;
   align-items: center;
   font-size: 3vw;
 }
 
-.x {
+#x {
   width: 25vw;
   min-height: 50%;
   margin: 0 3%;
   padding: 0 3%;
 }
 
-.y {
+#y {
   width: 25vw;
   min-height: 50%;
   margin: 0 5%;
