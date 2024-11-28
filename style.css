@@ -1,0 +1,191 @@
+/* Global Resets */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100vh;
+  width: 100%;
+}
+
+/* Navigation Bar */
+.nav-bar {
+  min-height: 25vh;
+  background-color: lightblue;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Main Content Section */
+.content {
+  display: flex;
+  flex-direction: row;
+  min-height: 75vh;
+}
+
+.left-side {
+  display: flex;
+  flex-wrap: wrap;
+  width: 75vw;
+  min-height: 50vh;
+  flex-direction: column;
+}
+
+.right-sidebar {
+  width: 25vw;
+  background-color: lightsalmon;
+  padding: 1%;
+  font-size: 2vw;
+  flex: 1;
+  min-height: 75vh;
+}
+
+/* Menu Content and Footer */
+.menu-contant-container {
+  display: flex;
+  min-height: 50vh;
+  flex: 1 1 auto;
+}
+
+.footer {
+  min-height: 25vh;
+  width: 100%;
+  background-color: lightblue;
+  display: flex;
+  align-self: flex-end;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Sidebars and Main Content */
+.left-sidebar {
+  display: flex;
+  flex-wrap: wrap;
+  width: 25vw;
+  min-height: 50vh;
+  font-size: 3vw;
+}
+
+.main-content {
+  width: 50vw;
+  background-color: white;
+  padding: 2%;
+  font-size: 4vw;
+}
+
+/* Side Menu and Sidebar Widget */
+.side-menu,
+.sidebar-widget {
+  height: 25hv;
+  width: 25vw;
+  padding: 10%;
+}
+
+.side-menu {
+  background-color: lightsalmon;
+}
+
+.sidebar-widget {
+  background-color: lightgreen;
+}
+
+/* Dynamic Blocks */
+.x,
+.y {
+  background-color: white;
+  display: flex;
+  align-items: center;
+  font-size: 3vw;
+}
+
+.x {
+  width: 25vw;
+  min-height: 50%;
+  margin: 0 3%;
+  padding: 0 3%;
+}
+
+.y {
+  width: 25vw;
+  min-height: 50%;
+  margin: 0 5%;
+  padding: 0 3%;
+  align-self: flex-start;
+}
+
+/* Navigation Buttons */
+.nav-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Players Section */
+.players {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  font-size: 3vw;
+}
+
+/* Lists */
+.list {
+  margin: 5%;
+}
+
+.home {
+  height: 50%;
+}
+
+/* Logos */
+.logo {
+  width: 15vw;;
+}
+
+/* Quotes */
+.quote {
+  text-align: right;
+  width: 50%;
+  margin: 5%;
+  font-size: 4vw;
+}
+
+.words {
+  font-style: italic;
+}
+
+.chessboard {
+  width: 70%;
+}
+
+@media (max-aspect-ratio: 9/12) {
+  .content {
+    flex-direction: column-reverse;
+  }
+
+  .content > *,
+  .menu-contant-container > *,
+  .left-sidebar > * {
+    width: 100%;
+  }
+
+  .menu-contant-container {
+    flex-direction: column-reverse;
+  }
+
+  .right-sidebar {
+    min-height: 25vh;
+  }
+
+  .main-content {
+    min-height: 50vh;
+  }
+}
