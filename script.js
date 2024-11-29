@@ -46,7 +46,6 @@ const createButton = (mainContainer, inputForm) => {
     setCookie("amount", countMax());
     mainContainer.removeChild(inputForm);
     mainContainer.removeChild(countBtn);
-    deleteCookiesPls("amount");
   });
 
   return countBtn;
@@ -104,9 +103,7 @@ const getCookie = (name) => {
 };
 
 const deleteCookie = (name) =>
-  (document.cookie = `${name}=, expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/`);
-
-createForm();
+  (document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/`);
 
 const deleteCookiesPls = (cookieToDelete) => {
   const confDelete = confirm(
@@ -124,3 +121,108 @@ const deleteCookiesPls = (cookieToDelete) => {
       "Кому сказав видалить пряники?! Ладно, в тебе ще є шанс: якщо оновиш сторінку, то видалиться"
     );
 };
+
+const deleteCookiesRefresh = (name) => {
+  if (getCookie(name)) {
+    deleteCookiesPls(name);
+  } else {
+    createForm();
+  }
+};
+
+deleteCookiesRefresh("amount");
+
+// task 4
+const setBlockBackgroundColor = () => {
+  const block2 = document.getElementById("block2");
+  block2.tabIndex = 0;
+
+  const savedColor = localStorage.getItem("block2-bc");
+  if (savedColor) {
+    block2.style.backgroundColor = savedColor;
+  }
+
+  block2.addEventListener("click", () => {
+    const newColor = prompt(
+      "Ось ти і попався... Введи новий колір для цього блоку"
+    );
+    if (newColor) {
+      localStorage.setItem("block2-bc", newColor);
+      block2.style.backgroundColor = newColor;
+    }
+  });
+};
+
+setBlockBackgroundColor();
+
+//task 5
+const initializeEditableBlocks = () => {
+  const numberBlocks = document.querySelectorAll(".number-block");
+
+  numberBlocks.forEach((block) => {
+    block.addEventListener("dblclick", () => {
+      const currentContent = block.innerHTML;
+
+      const form = document.createElement("form");
+      const input = document.createElement("input");
+      const saveButton = document.createElement("button");
+
+      input.type = "text";
+      input.value = currentContent;
+
+      saveButton.type = "submit";
+      saveButton.textContent = "Save";
+
+      form.appendChild(input);
+      form.appendChild(saveButton);
+
+      block.innerHTML = "";
+      block.appendChild(form);
+
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        const newContent = input.value;
+
+        localStorage.setItem(block.id, newContent);
+
+        block.innerHTML = newContent;
+
+        block.style.backgroundColor = getRandomColor();
+
+        addResetButton(block, currentContent);
+      });
+    });
+  });
+};
+
+const getRandomColor = () => {
+  const letters = "0123456789ABCDEF";
+  let color = "#";
+  for (let i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+};
+
+const addResetButton = (block, originalContent) => {
+  const existingButton = block.nextElementSibling;
+  if (existingButton && existingButton.classList.contains("reset-btn")) return;
+
+  const resetButton = document.createElement("button");
+  resetButton.textContent = "Reset";
+  resetButton.className = "reset-btn";
+
+  resetButton.addEventListener("click", () => {
+    const savedContent = originalContent;
+
+    block.innerHTML = savedContent;
+
+    resetButton.remove();
+    localStorage.removeItem(block.id);
+  });
+
+  block.parentNode.insertBefore(resetButton, block.nextSibling);
+};
+
+initializeEditableBlocks();

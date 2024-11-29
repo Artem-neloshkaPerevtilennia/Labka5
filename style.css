@@ -40,7 +40,7 @@ body {
   width: 25vw;
   background-color: lightsalmon;
   padding: 1%;
-  font-size: 2vw;
+  font-size: 2vh;
   flex: 1;
   min-height: 75vh;
 }
@@ -69,14 +69,14 @@ body {
   flex-wrap: wrap;
   width: 25vw;
   min-height: 50vh;
-  font-size: 3vw;
+  font-size: 3vh;
 }
 
 .main-content {
   width: 50vw;
   background-color: white;
   padding: 2%;
-  font-size: 4vw;
+  font-size: 4vh;
 }
 
 /* Side Menu and Sidebar Widget */
@@ -101,7 +101,7 @@ body {
   background-color: white;
   display: flex;
   align-items: center;
-  font-size: 3vw;
+  font-size: 3vh;
 }
 
 #x {
@@ -133,7 +133,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  font-size: 3vw;
+  font-size: 3vh;
 }
 
 /* Lists */
@@ -147,7 +147,7 @@ body {
 
 /* Logos */
 .logo {
-  width: 15vw;;
+  width: 15vh;;
 }
 
 /* Quotes */
@@ -155,7 +155,7 @@ body {
   text-align: right;
   width: 50%;
   margin: 5%;
-  font-size: 4vw;
+  font-size: 4vh;
 }
 
 .words {
@@ -187,5 +187,10 @@ body {
 
   .main-content {
     min-height: 50vh;
+  }
+
+  .logo {
+    height: auto;
+    width: 15vw;
   }
 }
